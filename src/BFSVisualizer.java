@@ -71,6 +71,8 @@ public class BFSVisualizer {
         // Add the button panel to the top of the window
         frame.add(buttonPanel, BorderLayout.NORTH);
         JButton search = new JButton("Search Shortest Path");
+        search.setPreferredSize(new Dimension(120, 50));
+        search.setBackground(Color.pink);
         ActionListener listener4 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
