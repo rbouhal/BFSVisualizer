@@ -7,9 +7,9 @@ public class BFSVisualizer {
     
     private JFrame frame;
     private Graph graph;
+    private String v2;
 
     public BFSVisualizer() {
-        graph = new Graph();
         frame = new JFrame("BFS Visualizer");
         frame.setSize(1000, 800);
         frame.setLayout(new BorderLayout());
@@ -32,7 +32,7 @@ public class BFSVisualizer {
         ActionListener listener2 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Button 2 clicked");
+                makeGraph2();
             }
         };
 
@@ -81,42 +81,110 @@ public class BFSVisualizer {
         graph.addEdge("A", "C");
         graph.addEdge("C", "F");
         
+        v2 = "F";
         
-       
+        Graph1 graph1 = new Graph1();
+        frame.getContentPane().add(graph1);
+        frame.revalidate(); // Update the layout of the JFrame
+        
+          
+    }
+    
+    public void makeGraph2()
+    {
+        frame.revalidate();
+        graph = new Graph();
+        String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"};
+        for(String s: letters)
+        {
+            graph.addVertex(s);
+        }
+        
+        graph.addEdge("A", "B");
+        graph.addEdge("A", "C");
+        graph.addEdge("A", "D");
+        graph.addEdge("A", "E");
+        graph.addEdge("A", "F");
+        graph.addEdge("B", "G");
+        graph.addEdge("B", "H");
+        graph.addEdge("B", "G");
+        graph.addEdge("C", "I");
+        graph.addEdge("E", "J");
+        graph.addEdge("E", "K");
+        graph.addEdge("E", "L");
+        graph.addEdge("F", "M");
+        
         Graphics g = frame.getGraphics();
         Font font = new Font("Comic Sans", Font.BOLD, 50);
         g.setFont(font);
         g.setColor(Color.BLACK);
         
         //Draw Edge AB
-        int xA = 400;
-        int yA = 100;
-        int xB = 200;
+        int xA = 425;
+        int yA = 150;
+        int xB = 125;
         int yB = 200;
+        
+        v2 = "L";
         
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(7));
         g.drawLine(xA + 50, yA + 50, xB + 50, yB+50);
         
         //Draw Edge AC
-        int xC = 600;
-        int yC = 200;
+        int xC = 250;
+        int yC = 250;
         g.drawLine(xA + 50, yA + 50, xC + 50, yC+50);
         
-        //Draw Edge BD
-        int xD = 100;
-        int yD = 400;
-        g.drawLine(xB + 50, yB + 50, xD + 50, yD+50);
+        //Draw Edge AD
+        int xD = 425;
+        int yD = 300;
+        g.drawLine(xA + 50, yA + 50, xD + 50, yD+50);
         
-        //Draw Edge BE
-        int xE = 300;
-        int yE = 400;
-        g.drawLine(xB + 50, yB + 50, xE + 50, yE+50);
+        //Draw Edge AE
+        int xE = 600;
+        int yE = 250;
+        g.drawLine(xA + 50, yA + 50, xE + 50, yE+50);
         
-        //Draw Edge CF
-        int xF = 600;
-        int yF = 400;
-        g.drawLine(xC + 50, yC + 50, xF + 50, yF+50);
+        //Draw Edge AF
+        int xF = 725;
+        int yF = 200;
+        g.drawLine(xA + 50, yA + 50, xF + 50, yF+50);
+        
+        //Draw Edge BG
+        int xG = 20;
+        int yG = 350;
+        g.drawLine(xB + 50, yB + 50, xG + 50, yG+50);
+        
+        //Draw Edge BH
+        int xH = 115;
+        int yH = 450;
+        g.drawLine(xB + 50, yB + 50, xH + 50, yH+50);
+        
+        //Draw Edge CI
+        int xI = 250;
+        int yI = 450;
+        g.drawLine(xC + 50, yC + 50, xI + 50, yI+50);
+        
+        //Draw Edge EJ
+        int xJ = 450;
+        int yJ = 425;
+        g.drawLine(xE + 50, yE + 50, xJ + 50, yJ+50);
+        
+        //Draw Edge EK
+        int xK = 575;
+        int yK = 450;
+        g.drawLine(xE + 50, yE + 50, xK + 50, yK+50);
+        
+        //Draw Edge EL
+        int xL = 700;
+        int yL = 415;
+        g.drawLine(xE + 50, yE + 50, xL + 50, yL+50);
+        
+        //Draw Edge FM
+        int xM = 875;
+        int yM = 350;
+        g.drawLine(xF + 50, yF + 50, xM + 50, yM+50);
         
         //Draw Vertex A
         g.drawOval(xA, yA, 100, 100);
@@ -160,14 +228,78 @@ public class BFSVisualizer {
         g.fillOval(xF, yF, 100, 100);
         g.setColor(Color.BLACK);
         g.drawString("F", xF + 30, yF + 60);
-          
+        
+      //Draw Vertex G
+        g.drawOval(xG, yG, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xG, yG, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("G", xG + 30, yG + 60);
+        
+      //Draw Vertex H
+        g.drawOval(xH, yH, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xH, yH, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("H", xH + 30, yH + 60);
+        
+      //Draw Vertex I
+        g.drawOval(xI, yI, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xI, yI, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("I", xI + 30, yI + 60);
+
+        //Draw Vertex J
+        g.drawOval(xJ, yJ, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xJ, yJ, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("J", xJ + 30, yJ + 60);
+
+        //Draw Vertex K
+        g.drawOval(xK, yK, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xK, yK, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("K", xK + 30, yK + 60);
+
+        //Draw Vertex L
+        g.drawOval(xL, yL, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xL, yL, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("L", xL + 30, yL + 60);
+
+        //Draw Vertex M
+        g.drawOval(xM, yM, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xM, yM, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("M", xM + 30, yM + 60);
     }
     
     public void drawPath() {
-        String s = graph.writePath("A", "F");
-        JLabel label = new JLabel(s);
-        frame.add(label);
+        if (graph != null)
+        {
+            String s = graph.writePath("A", v2);
+            JLabel label = new JLabel(s);
+            Font font = label.getFont();
+            label.setFont(new Font(font.getName(), font.getStyle(), 60)); // set font size to 18
+            // create a layered pane and add the label to it
+            JLayeredPane layeredPane = frame.getRootPane().getLayeredPane();
+            layeredPane.add(label, JLayeredPane.PALETTE_LAYER);
+            
+            // set the position of the label
+            label.setBounds(550, 600, 600, 100);
+            
+            frame.setVisible(true);
+        }
+        
+        
     }
+    
+    
 
 
 
