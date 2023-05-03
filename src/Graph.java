@@ -68,4 +68,16 @@ public class Graph {
         return edges;
     }
     
+    public String writePath(String start, String end) {
+        List<String> list = this.breadthFirstSearch(start, end);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++)
+        {
+            sb.append(list.get(i) + "-");
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+        
+    }
+    
 }
