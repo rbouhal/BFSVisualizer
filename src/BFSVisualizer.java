@@ -9,6 +9,7 @@ public class BFSVisualizer {
     private Graph graph;
 
     public BFSVisualizer() {
+        graph = new Graph();
         frame = new JFrame("BFS Visualizer");
         frame.setSize(1000, 800);
         frame.setLayout(new BorderLayout());
@@ -56,7 +57,7 @@ public class BFSVisualizer {
         ActionListener listener4 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Button Seach clicked");
+                drawPath();
             }
         };
         search.addActionListener(listener4);
@@ -74,18 +75,100 @@ public class BFSVisualizer {
             graph.addVertex(s);
         }
         
+        graph.addEdge("A", "B");
+        graph.addEdge("B","D");
+        graph.addEdge("B", "E");
+        graph.addEdge("A", "C");
+        graph.addEdge("C", "F");
+        
+        
+       
         Graphics g = frame.getGraphics();
         Font font = new Font("Comic Sans", Font.BOLD, 50);
         g.setFont(font);
         g.setColor(Color.BLACK);
-        //Draw A
-        int x = 400;
-        int y = 100;
-        g.drawOval(x, y, 100, 100);
+        
+        //Draw Edge AB
+        int xA = 400;
+        int yA = 100;
+        int xB = 200;
+        int yB = 200;
+        
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(7));
+        g.drawLine(xA + 50, yA + 50, xB + 50, yB+50);
+        
+        //Draw Edge AC
+        int xC = 600;
+        int yC = 200;
+        g.drawLine(xA + 50, yA + 50, xC + 50, yC+50);
+        
+        //Draw Edge BD
+        int xD = 100;
+        int yD = 400;
+        g.drawLine(xB + 50, yB + 50, xD + 50, yD+50);
+        
+        //Draw Edge BE
+        int xE = 300;
+        int yE = 400;
+        g.drawLine(xB + 50, yB + 50, xE + 50, yE+50);
+        
+        //Draw Edge CF
+        int xF = 600;
+        int yF = 400;
+        g.drawLine(xC + 50, yC + 50, xF + 50, yF+50);
+        
+        //Draw Vertex A
+        g.drawOval(xA, yA, 100, 100);
         g.setColor(Color.WHITE);
-        g.fillOval(x, y, 100, 100);
+        g.fillOval(xA, yA, 100, 100);
         g.setColor(Color.BLACK);
-        g.drawString("A", x + 30, y + 60);
+        g.drawString("A", xA + 30, yA + 60);
+        
+        //Draw Vertex B
+        
+        g.drawOval(xB, yB, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xB, yB, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("B", xB + 30, yB + 60);
+        
+        //Draw Vertex C
+        g.drawOval(xC, yC, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xC, yC, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("C", xC + 30, yC + 60);
+        
+        //Draw Vertex D
+        g.drawOval(xD, yD, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xD, yD, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("D", xD + 30, yD + 60);
+        
+        //Draw Vertex E
+        g.drawOval(xE, yE, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xE, yE, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("E", xE + 30, yE + 60);
+        
+        //Draw Vertex F
+        g.drawOval(xF, yF, 100, 100);
+        g.setColor(Color.WHITE);
+        g.fillOval(xF, yF, 100, 100);
+        g.setColor(Color.BLACK);
+        g.drawString("F", xF + 30, yF + 60);
           
     }
+    
+    public void drawPath() {
+        String s = graph.writePath("A", "F");
+        JLabel label = new JLabel(s);
+        frame.add(label);
+    }
+
+
+
 }
